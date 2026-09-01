@@ -139,8 +139,8 @@ export default function Home() {
           <p className="eyebrow">Research standard</p>
         </div>
         <h2>
-          Each finding is documented around reproducibility, the boundary
-          crossed, attacker requirements, and demonstrated impact.
+          AI widens the search. Human judgment decides what is real, what is
+          responsible, and what the evidence can actually support.
         </h2>
         <a className="primary-link inverse" href="/method">
           View the method <ArrowUpRight size={16} />
