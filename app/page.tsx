@@ -1,4 +1,163 @@
 import Link from 'next/link';
 import { ArrowUpRight, FlaskConical, ShieldCheck } from 'lucide-react';
-const cases=[{id:'CR-001',area:'Web',title:'Cross-boundary messaging in embedded applications',outcome:'Origin confusion → privileged action',status:'Candidate'},{id:'CR-002',area:'Desktop',title:'Parsing an untrusted project file',outcome:'Malformed input → unsafe native path',status:'Under review'},{id:'CR-003',area:'Cloud',title:'Authorization paths across shared resources',outcome:'Object boundary → access-control analysis',status:'Draft'}];
-export default function Home(){return <main><header className="site-header shell"><Link className="brand" href="/"><span className="brand-mark">V/A</span><span>validbyaccident</span></Link><nav><Link href="/research">Index</Link><Link href="/method">Standard</Link><Link href="/about">Identity</Link></nav></header><section className="hero shell"><div className="hero-copy"><p className="eyebrow"><span className="live-dot"/> Majd Chorfi · Independent security researcher</p><h1>Research across<br/><i>complex products.</i></h1><p className="lede">I investigate browser, cloud, web, and desktop attack surfaces, with an emphasis on reproducible behavior and clear security impact.</p><div className="hero-actions"><Link className="primary-link" href="/research">Enter the index <ArrowUpRight size={16}/></Link><Link className="text-link" href="/method">Research methodology</Link></div></div><aside className="lab-note"><div className="panel-label">Research profile / active</div><div className="coordinate">06°31′N<br/>003°23′E</div><dl><div><dt>Surface 01</dt><dd>Browsers & embedded trust</dd></div><div><dt>Surface 02</dt><dd>Cloud authorization</dd></div><div><dt>Surface 03</dt><dd>Desktop attack paths</dd></div></dl><div className="policy"><ShieldCheck size={17}/><span>Public records are sanitized and published through coordinated disclosure.</span></div></aside></section><div className="ticker"><span>PROGRAMS TESTED / GOOGLE / CHROME / VS CODE / ADOBE / FIGMA / HUBSPOT / PINTEREST / PLAID / KUCOIN / 1INCH /</span><span>PROGRAMS TESTED / GOOGLE / CHROME / VS CODE / ADOBE / FIGMA / HUBSPOT / PINTEREST / PLAID / KUCOIN / 1INCH /</span></div><section className="case-section shell"><div className="section-heading"><div><p className="eyebrow">Research index</p><h2>Selected investigations.</h2></div><Link className="text-link" href="/research">Full index <ArrowUpRight size={15}/></Link></div><div className="case-grid">{cases.map((item,index)=><article className="case-card" key={item.id}><div className="case-meta"><span>{item.id}</span><span>0{index+1} / 03</span></div><div><span className="case-area">{item.area}</span><h3>{item.title}</h3><p>{item.outcome}</p></div><div className="case-footer"><span className="status">{item.status}</span><span>Not a public claim</span></div></article>)}</div></section><section className="method-strip shell"><div><FlaskConical size={20}/><p className="eyebrow">Research standard</p></div><h2>Each finding is documented around reproducibility, the boundary crossed, attacker requirements, and demonstrated impact.</h2><Link className="primary-link inverse" href="/method">View the method <ArrowUpRight size={16}/></Link></section><footer className="site-footer shell"><div><strong>Majd Chorfi</strong><span>validbyaccident · Independent security research</span></div><div className="profile-links" aria-label="Research profiles"><span>HackerOne</span><span>HackenProof</span><span>Google VRP</span><span>X</span><span>LinkedIn</span></div><Link href="/about">Contact / disclosure</Link></footer></main>}
+const cases = [
+  {
+    id: 'CR-001',
+    area: 'Web',
+    title: 'Cross-boundary messaging in embedded applications',
+    outcome: 'Origin confusion → privileged action',
+    status: 'Candidate',
+  },
+  {
+    id: 'CR-002',
+    area: 'Desktop',
+    title: 'Parsing an untrusted project file',
+    outcome: 'Malformed input → unsafe native path',
+    status: 'Under review',
+  },
+  {
+    id: 'CR-003',
+    area: 'Cloud',
+    title: 'Authorization paths across shared resources',
+    outcome: 'Object boundary → access-control analysis',
+    status: 'Draft',
+  },
+];
+export default function Home() {
+  return (
+    <main>
+      <header className="site-header shell">
+        <Link className="brand" href="/">
+          <span className="brand-mark">V/A</span>
+          <span>validbyaccident</span>
+        </Link>
+        <nav>
+          <Link href="/research">Index</Link>
+          <Link href="/method">Standard</Link>
+          <Link href="/about">Identity</Link>
+        </nav>
+      </header>
+      <section className="hero shell">
+        <div className="hero-copy">
+          <p className="eyebrow">
+            <span className="live-dot" /> Majd Chorfi · Independent security
+            researcher
+          </p>
+          <h1>
+            Research across
+            <br />
+            <i>complex products.</i>
+          </h1>
+          <p className="lede">
+            I investigate browser, cloud, web, and desktop attack surfaces, with
+            an emphasis on reproducible behavior and clear security impact.
+          </p>
+          <div className="hero-actions">
+            <Link className="primary-link" href="/research">
+              Enter the index <ArrowUpRight size={16} />
+            </Link>
+            <Link className="text-link" href="/method">
+              Research methodology
+            </Link>
+          </div>
+        </div>
+        <aside className="lab-note">
+          <div className="panel-label">Research profile / active</div>
+          <div className="coordinate">
+            MAJD CHORFI
+            <br />
+            <span>INDEPENDENT / RESEARCH</span>
+          </div>
+          <dl>
+            <div>
+              <dt>Surface 01</dt>
+              <dd>Browsers & embedded trust</dd>
+            </div>
+            <div>
+              <dt>Surface 02</dt>
+              <dd>Cloud authorization</dd>
+            </div>
+            <div>
+              <dt>Surface 03</dt>
+              <dd>Desktop attack paths</dd>
+            </div>
+          </dl>
+          <div className="policy">
+            <ShieldCheck size={17} />
+            <span>
+              Public records are sanitized and published through coordinated
+              disclosure.
+            </span>
+          </div>
+        </aside>
+      </section>
+      <div className="ticker">
+        <span>
+          PROGRAMS TESTED / GOOGLE / CHROME / VS CODE / ADOBE / FIGMA / HUBSPOT
+          / PINTEREST / PLAID / KUCOIN / 1INCH /
+        </span>
+        <span>
+          PROGRAMS TESTED / GOOGLE / CHROME / VS CODE / ADOBE / FIGMA / HUBSPOT
+          / PINTEREST / PLAID / KUCOIN / 1INCH /
+        </span>
+      </div>
+      <section className="case-section shell">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Research index</p>
+            <h2>Selected investigations.</h2>
+          </div>
+          <Link className="text-link" href="/research">
+            Full index <ArrowUpRight size={15} />
+          </Link>
+        </div>
+        <div className="case-grid">
+          {cases.map((item, index) => (
+            <article className="case-card" key={item.id}>
+              <div className="case-meta">
+                <span>{item.id}</span>
+                <span>0{index + 1} / 03</span>
+              </div>
+              <div>
+                <span className="case-area">{item.area}</span>
+                <h3>{item.title}</h3>
+                <p>{item.outcome}</p>
+              </div>
+              <div className="case-footer">
+                <span className="status">{item.status}</span>
+                <span>Not a public claim</span>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+      <section className="method-strip shell">
+        <div>
+          <FlaskConical size={20} />
+          <p className="eyebrow">Research standard</p>
+        </div>
+        <h2>
+          Each finding is documented around reproducibility, the boundary
+          crossed, attacker requirements, and demonstrated impact.
+        </h2>
+        <Link className="primary-link inverse" href="/method">
+          View the method <ArrowUpRight size={16} />
+        </Link>
+      </section>
+      <footer className="site-footer shell">
+        <div>
+          <strong>Majd Chorfi</strong>
+          <span>validbyaccident · Independent security research</span>
+        </div>
+        <div className="profile-links" aria-label="Research profiles">
+          <span>HackerOne</span>
+          <span>HackenProof</span>
+          <span>Google VRP</span>
+          <span>X</span>
+          <span>LinkedIn</span>
+        </div>
+        <Link href="/about">Contact / disclosure</Link>
+      </footer>
+    </main>
+  );
+}
