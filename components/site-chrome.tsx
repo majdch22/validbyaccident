@@ -1,3 +1,3 @@
 import Link from 'next/link';
 export function Header(){return <header className="site-header shell"><Link className="brand" href="/"><span className="brand-mark">V/A</span><span>validbyaccident</span></Link><nav><Link href="/research">Index</Link><Link href="/method">Standard</Link><Link href="/about">Identity</Link></nav></header>}
-export function Footer(){return <footer className="site-footer shell"><span>validbyaccident</span><span>Independent security research · Lagos</span><Link href="/about">Contact / disclosure</Link></footer>}
+export function Footer(){return <footer className="site-footer shell"><div><strong>Majd Chorfi</strong><span>validbyaccident · Independent security research</span></div><div className="profile-links" aria-label="Research profiles"><span>HackerOne</span><span>HackenProof</span><span>Google VRP</span><span>X</span><span>LinkedIn</span></div><Link href="/about">Contact / disclosure</Link></footer>}

@@ -1,0 +1,6 @@
+.site-footer{display:grid;grid-template-columns:1fr auto auto;align-items:start;gap:28px}
+.site-footer>div:first-child{display:flex;flex-direction:column;gap:7px}
+.site-footer strong{color:var(--foreground)}
+.profile-links{display:flex;flex-wrap:wrap;gap:8px 16px}
+.profile-links span{border-bottom:1px solid var(--line);padding-bottom:4px}
+@media(max-width:800px){.site-footer{grid-template-columns:1fr}.profile-links{max-width:420px}}
