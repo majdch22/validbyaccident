@@ -5,8 +5,8 @@ import { researchRecords } from '@/lib/research-records';
 
 export const metadata: Metadata = { title: 'Research index' };
 const records = [
-  { id:'CR-001', area:'Web', title:'The preview server was also a file server', status:'Duplicate / resolved', href:'/research/preview-server-file-disclosure' },
-  ...researchRecords.map(record=>({id:record.id,area:record.area,title:record.title,status:record.result,href:`/research/${record.slug}`})),
+  { category:'WEB—FILESYSTEM', title:'The preview server was also a file server', published:'01 SEP 2026', href:'/research/preview-server-file-disclosure' },
+  ...researchRecords.map(record=>({category:record.category,title:record.title,published:record.published,href:`/research/${record.slug}`})),
 ];
 
-export default function Research(){return <main><Header/><section className="page-shell shell"><div className="page-title"><p className="eyebrow">Research index / 12 records</p><h1>What broke, and why it mattered.</h1><p className="lede">Anonymized case studies from resolved web research: paid findings, independently discovered duplicates, and the proof that turned odd behavior into a security boundary.</p></div><div className="index-list">{records.map(record=><Link className="index-row" href={record.href} key={record.id}><small>{record.id}</small><small>{record.area}</small><strong>{record.title}</strong><small>{record.status} →</small></Link>)}</div></section><Footer/></main>}
+export default function Research(){return <main><Header/><section className="page-shell shell"><div className="page-title"><p className="eyebrow">Research index</p><h1>Published research.</h1></div><div className="index-list publication-list">{records.map(record=><Link className="index-row publication-row" href={record.href} key={record.href}><small>{record.category}</small><strong>{record.title}</strong><time dateTime="2026-09-01">{record.published}</time></Link>)}</div></section><Footer/></main>}

@@ -1,12 +1,12 @@
 export type ResearchSection = { heading: string; paragraphs: string[]; code?: string };
 export type ResearchRecord = {
-  slug: string; id: string; area: string; title: string; deck: string; opening: string;
+  slug: string; id: string; area: string; category: string; status: 'PAID'|'DUP'; published: string; title: string; deck: string; opening: string;
   access: string; result: string; impact: string; note: string; sections: ResearchSection[];
 };
 
 export const researchRecords: ResearchRecord[] = [
   {
-    slug:'microphone-permission-delegation',id:'CR-002',area:'Browser',title:'The browser remembered yes. The preview used it.',
+    slug:'microphone-permission-delegation',id:'CR-002',area:'Browser',category:'WEB—BROWSER',status:'DUP',published:'01 SEP 2026',title:'The browser remembered yes. The preview used it.',
     deck:'An application delegated microphone access to cross-origin code written by its users. One shared project link was enough to turn an old permission grant into live audio capture.',
     opening:'I was checking the permissions attached to a project preview, not trying to attack the microphone. Then I saw allow="microphone" on an iframe whose contents were controlled by whoever created the project.',
     access:'Shared project link',result:'Duplicate / resolved',impact:'Silent audio transcription',note:'The affected AI application builder is unnamed. Project URLs, preview domains, identifiers, and captured test speech are removed.',
@@ -18,7 +18,7 @@ export const researchRecords: ResearchRecord[] = [
     ]
   },
   {
-    slug:'sms-step-up-totp-enrollment',id:'CR-003',area:'Auth',title:'The interface required SMS. The enrollment endpoint did not.',
+    slug:'sms-step-up-totp-enrollment',id:'CR-003',area:'Auth',category:'WEB—AUTH',status:'PAID',published:'01 SEP 2026',title:'The interface required SMS. The enrollment endpoint did not.',
     deck:'A crypto account required two verification steps before adding an authenticator. An alternate client path reached the same sensitive action with only the email step.',
     opening:'The settings screen was clear: before a new authenticator could be bound, I had to verify both email and the SMS factor already protecting the account. I wanted to know whether that rule belonged to the server or only to the path the interface normally chose.',
     access:'Session + email code',result:'Paid / resolved',impact:'Unauthorized TOTP binding',note:'The affected exchange is unnamed. Account identifiers, endpoints, verification material, and the bounty amount are omitted.',
@@ -30,7 +30,7 @@ export const researchRecords: ResearchRecord[] = [
     ]
   },
   {
-    slug:'ai-widget-origin-trust',id:'CR-004',area:'Browser / AI',title:'The first message became the trusted origin.',
+    slug:'ai-widget-origin-trust',id:'CR-004',area:'Browser / AI',category:'WEB—BROWSER/AI',status:'DUP',published:'01 SEP 2026',title:'The first message became the trusted origin.',
     deck:'A frameable AI widget learned its parent origin from the first synchronization message. An external page could claim that trust and fire authenticated CRM actions.',
     opening:'The widget had an origin check. That initially looked reassuring. The problem was where the expected origin came from: the first window that sent the right synchronization message got to define it.',
     access:'Victim logged in',result:'Duplicate / post-fix variant',impact:'Unauthorized AI actions',note:'The CRM vendor, iframe protocol, portal identifiers, component names, and report references are anonymized.',
@@ -42,7 +42,7 @@ export const researchRecords: ResearchRecord[] = [
     ]
   },
   {
-    slug:'client-flags-admin-impersonation',id:'CR-005',area:'Authorization',title:'Changing the role flag opened the door. The API forgot to close it.',
+    slug:'client-flags-admin-impersonation',id:'CR-005',area:'Authorization',category:'WEB—AUTHZ',status:'DUP',published:'01 SEP 2026',title:'Changing the role flag opened the door. The API forgot to close it.',
     deck:'Response manipulation exposed an administrative workflow, but the real finding came one request later: a normal user could send staff-branded messages to other users.',
     opening:'Changing isAdmin from false to true made an admin console appear. On its own, that meant almost nothing. Frontends can display whatever a user makes them display. The next request decided whether this was a visual trick or a security boundary.',
     access:'Normal account',result:'Duplicate / resolved',impact:'Staff impersonation',note:'The affected Web3 platform, procedures, wallet addresses, user records, and interface branding are removed.',
@@ -54,7 +54,7 @@ export const researchRecords: ResearchRecord[] = [
     ]
   },
   {
-    slug:'delegated-request-cross-portal',id:'CR-006',area:'Browser',title:'One delegated path crossed into another portal.',
+    slug:'delegated-request-cross-portal',id:'CR-006',area:'Browser',category:'WEB—BROWSER',status:'PAID',published:'01 SEP 2026',title:'One delegated path crossed into another portal.',
     deck:'Attacker-controlled preview content could choose an internal API path used by an authenticated parent application, turning a message bridge into unauthorized CRM object creation.',
     opening:'The JavaScript ran on a preview domain, which normally limits the impact of an XSS report. The interesting part was not where the script ran. It was what the authenticated parent application agreed to do when that preview sent it a message.',
     access:'Low-privilege author + viewer',result:'Paid / Medium',impact:'Cross-portal CRM writes',note:'The CRM platform, domains, portal IDs, internal message names, report number, and customer data are anonymized.',
@@ -66,7 +66,7 @@ export const researchRecords: ResearchRecord[] = [
     ]
   },
   {
-    slug:'graphql-wallet-data-idor',id:'CR-007',area:'API',title:'A wallet address was treated as authorization.',
+    slug:'graphql-wallet-data-idor',id:'CR-007',area:'API',category:'WEB—API',status:'DUP',published:'01 SEP 2026',title:'A wallet address was treated as authorization.',
     deck:'Two GraphQL queries accepted any Ethereum address and returned another account’s rewards and profile records. A second controlled account proved the boundary.',
     opening:'Wallet addresses are public, which makes authorization testing around them easy to get wrong. Seeing an address parameter in a GraphQL query is not automatically an IDOR. I needed to know whether changing it exposed application data that belonged to another account.',
     access:'Authenticated account',result:'Duplicate / resolved',impact:'Cross-account data access',note:'The platform, API hostname, operation names, wallet addresses, and response values are anonymized.',
@@ -78,7 +78,7 @@ export const researchRecords: ResearchRecord[] = [
     ]
   },
   {
-    slug:'mfa-proof-reuse',id:'CR-008',area:'Auth',title:'The MFA proof outlived the action it was meant to protect.',
+    slug:'mfa-proof-reuse',id:'CR-008',area:'Auth',category:'WEB—AUTH',status:'PAID',published:'01 SEP 2026',title:'The MFA proof outlived the action it was meant to protect.',
     deck:'A login-time MFA token could authorize enrollment of another authenticator without a fresh challenge, turning temporary authenticated access into a more durable foothold.',
     opening:'At first I thought I had removed MFA by changing an account response. I had not. The server still knew the original factor existed, and the enrollment request still carried proof from the earlier login. The real issue was more subtle: that old proof was accepted for adding a new factor.',
     access:'Strongly authenticated session',result:'Paid / Low',impact:'Additional TOTP binding',note:'The identity platform, token contents, account identifiers, QR codes, report references, and reward are removed.',
@@ -90,7 +90,7 @@ export const researchRecords: ResearchRecord[] = [
     ]
   },
   {
-    slug:'oauth-session-swapping',id:'CR-009',area:'OAuth',title:'The callback belonged to the attacker. The browser belonged to the victim.',
+    slug:'oauth-session-swapping',id:'CR-009',area:'OAuth',category:'WEB—OAUTH',status:'PAID',published:'01 SEP 2026',title:'The callback belonged to the attacker. The browser belonged to the victim.',
     deck:'A missing OAuth request binding let an attacker move their own login callback into another browser, forcing the victim into the attacker’s account context.',
     opening:'I started a normal Google login for my own account and stopped at the application callback. Then I asked a simple OAuth question: what tied this callback to the browser that started it? The answer was nothing I could find.',
     access:'Victim opens crafted callback',result:'Paid / resolved',impact:'Forced login / session swap',note:'The Web3 service, callback domain, account details, exact dates, report references, and proof video are anonymized.',
@@ -102,7 +102,7 @@ export const researchRecords: ResearchRecord[] = [
     ]
   },
   {
-    slug:'user-record-bola',id:'CR-010',area:'API',title:'Changing one object ID returned another person’s record.',
+    slug:'user-record-bola',id:'CR-010',area:'API',category:'WEB—API',status:'PAID',published:'01 SEP 2026',title:'Changing one object ID returned another person’s record.',
     deck:'An authenticated profile lookup returned another user’s personal and KYC-related fields when supplied with that user’s identifier.',
     opening:'The endpoint name was direct: find a user by ID. Direct endpoints are useful during development and dangerous when the object identifier becomes the only authorization check.',
     access:'Any authenticated user',result:'Paid / resolved',impact:'Cross-user PII disclosure',note:'The financial platform, endpoint, identifiers, response bodies, personal data, dates, and reward are anonymized.',
@@ -114,7 +114,7 @@ export const researchRecords: ResearchRecord[] = [
     ]
   },
   {
-    slug:'javascript-logout-redirect',id:'CR-011',area:'XSS',title:'A logout redirect accepted JavaScript as a destination.',
+    slug:'javascript-logout-redirect',id:'CR-011',area:'XSS',category:'WEB—XSS',status:'PAID',published:'01 SEP 2026',title:'A logout redirect accepted JavaScript as a destination.',
     deck:'A crafted logout URL executed JavaScript on an authentication domain. The initial self-XSS ruling changed once the callback was delivered as a link.',
     opening:'The first reproduction was badly explained. I intercepted my own logout request, changed the redirect, and made the payload execute. Read literally, that looked like self-XSS. The missing step was that the modified request was already a URL an attacker could send to someone else.',
     access:'Victim opens crafted link',result:'Paid / Low',impact:'Script execution on auth origin',note:'The authentication provider, hostname, tenant configuration, user identifiers, report references, and reward are anonymized.',
@@ -126,7 +126,7 @@ export const researchRecords: ResearchRecord[] = [
     ]
   },
   {
-    slug:'race-condition-attempt-counter',id:'CR-012',area:'Concurrency',title:'Ten attempts became as many as I could send at once.',
+    slug:'race-condition-attempt-counter',id:'CR-012',area:'Concurrency',category:'WEB—RACE',status:'PAID',published:'01 SEP 2026',title:'Ten attempts became as many as I could send at once.',
     deck:'A non-atomic counter charged a parallel batch as a single attempt, letting vendor-association requests exceed the intended limit.',
     opening:'The endpoint gave me ten tries to associate a vendor identifier. I sent several requests together and expected the counter to fall once for each request. It moved by one.',
     access:'Association workflow',result:'Paid / Low',impact:'Attempt-limit bypass',note:'The commerce platform, endpoint, identifiers, report references, dates, and reward are anonymized.',

@@ -33,10 +33,10 @@ export default function PreviewServerDisclosure() {
   return <main><Header/><article className="article-shell shell">
     <Link className="article-back" href="/research"><ArrowLeft size={14}/> Research index</Link>
     <header className="article-hero">
-      <div className="article-kicker"><span>WEB / DISCLOSED</span><span>INDEPENDENTLY DISCOVERED — PREVIOUSLY REPORTED</span></div>
+      <div className="article-kicker"><span>WEB—FILESYSTEM</span><span>PUBLISHED 01 SEP 2026</span></div>
       <h1>The preview server was also a file server.</h1>
       <p className="article-deck">A source map exposed an absolute path. Vite turned that path into a source-code read. One directory change reached the project&apos;s live SQLite database.</p>
-      <div className="article-facts" aria-label="Case summary"><div><span>Surface</span><strong>AI website preview</strong></div><div><span>Access</span><strong>Unauthenticated</strong></div><div><span>Result</span><strong>Duplicate / resolved</strong></div><div><span>Impact</span><strong>Source + project database</strong></div></div>
+      <div className="article-facts article-facts-compact" aria-label="Publication details"><div><span>Category</span><strong>WEB—FILESYSTEM</strong></div><div><span>Published</span><strong>01 SEP 2026</strong></div><div><span>Status</span><strong>DUP</strong></div></div>
     </header>
     <div className="article-layout">
       <aside className="article-rail"><span>CASE 001</span><p>The affected company is intentionally unnamed. Paths, hostnames, identifiers, and customer data have been removed.</p></aside>
