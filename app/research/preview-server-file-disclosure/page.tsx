@@ -41,7 +41,7 @@ export default function PreviewServerDisclosure() {
       <aside className="article-rail"><span>CASE 001</span><p>The affected company is intentionally unnamed. Paths, hostnames, identifiers, and customer data have been removed.</p></aside>
       <div className="article-body">
         <p className="article-opening">The preview looked ordinary: a React application running while the website builder generated and edited code behind it. The response headers and transformed modules looked less ordinary. They belonged to a development server that was reachable from the public internet.</p>
-        <p>My first question was small: how much of the generated project was the preview willing to serve? I requested the application&apos;s main module directly. It returned the JavaScript without asking for a session, along with an inline source map.</p>
+        <p>My first question was small: how much of the generated project was the preview willing to serve? I requested the application&apos;s main module directly with a Hypertext Transfer Protocol (HTTP) request. It returned the JavaScript without asking for a session, along with an inline source map.</p>
         <h2>The path hiding in the source map</h2>
         <p>The source map did more than make the generated code easier to debug. Its <code>sources</code> entry contained the absolute path used inside the preview container.</p>
         <pre><code>{sourceResponse}</code></pre>
@@ -50,7 +50,7 @@ export default function PreviewServerDisclosure() {
         <p>Vite&apos;s development server supports an <code>/@fs/</code> route for serving files by absolute path. It is useful during local development. It becomes a different feature when the development server sits on a public preview domain.</p>
         <p>I rebuilt the leaked path as an <code>/@fs/</code> request.</p>
         <pre><code>{fileRead}</code></pre>
-        <p>The response was the raw component source. I sent no cookies and no authorization header. The server also returned a wildcard CORS header, so another website could read the response in a browser if it knew the preview identifier.</p>
+        <p>The response was the raw component source. I sent no cookies and no authorization header. The server also returned a wildcard Cross-Origin Resource Sharing (CORS) header, so another website could read the response in a browser if it knew the preview identifier.</p>
         <div className="article-note"><span>Boundary crossed</span><p>A shareable application preview was expected to expose rendered output. It exposed the preview process&apos;s readable project files instead.</p></div>
         <h2>I expected source code. I did not expect the database.</h2>
         <p>At this point I had source disclosure, but I wanted to understand where the filesystem boundary ended. The generated project also used PocketBase. Its data directory sat beside the frontend inside the same project tree.</p>
@@ -61,7 +61,7 @@ export default function PreviewServerDisclosure() {
         <h2>The boundary I demonstrated</h2>
         <p>An unauthenticated request, given an active preview identifier, could retrieve project source and the live SQLite database reachable by the preview process. The wildcard CORS response made both readable from an unrelated origin.</p>
         <p>The database contents naturally depended on the application using it; the security failure was that the entire live file crossed the project boundary without authentication. The demonstrated scope was every readable path Vite exposed inside the preview environment, including backend state—not a claim of container escape.</p>
-        <p>There was another practical constraint: the attacker needed the preview UUID, and previews were most reliable while recently active. That limits opportunistic scanning, but it does not restore authorization. Preview URLs are routinely shared, logged, and opened by collaborators.</p>
+        <p>There was another practical constraint: the attacker needed the preview&apos;s Universally Unique Identifier (UUID), and previews were most reliable while recently active. That limits opportunistic scanning, but it does not restore authorization. Preview Uniform Resource Locators (URLs) are routinely shared, logged, and opened by collaborators.</p>
         <h2>Why the development server changed the threat model</h2>
         <p>A production preview normally exposes compiled assets selected by the build. This preview exposed a running development server with knowledge of the project&apos;s source tree. The public host therefore inherited tools designed for a trusted workstation: transformed modules, inline source metadata, and absolute-path file serving.</p>
         <p>The source-map request and the <code>/@fs/</code> request were not separate bugs. The first disclosed the exact path syntax and directory layout required by the second. Once the project root was known, moving from the frontend into the adjacent PocketBase directory required no traversal bypass—only a readable path inside the development server&apos;s permitted scope.</p>
