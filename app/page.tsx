@@ -4,9 +4,10 @@ const cases = [
   {
     id: 'CR-001',
     area: 'Web',
-    title: 'Cross-boundary messaging in embedded applications',
-    outcome: 'Origin confusion → privileged action',
-    status: 'Candidate',
+    title: 'The preview server was also a file server',
+    outcome: 'Source map → source code → live database',
+    status: 'Disclosed',
+    href: '/research/preview-server-file-disclosure',
   },
   {
     id: 'CR-002',
@@ -14,6 +15,7 @@ const cases = [
     title: 'Parsing an untrusted project file',
     outcome: 'Malformed input → unsafe native path',
     status: 'Under review',
+    href: '/method',
   },
   {
     id: 'CR-003',
@@ -21,6 +23,7 @@ const cases = [
     title: 'Authorization paths across shared resources',
     outcome: 'Object boundary → access-control analysis',
     status: 'Draft',
+    href: '/method',
   },
 ];
 export default function Home() {
@@ -113,7 +116,7 @@ export default function Home() {
         </div>
         <div className="case-grid">
           {cases.map((item, index) => (
-            <article className="case-card" key={item.id}>
+            <Link className="case-card" href={item.href} key={item.id}>
               <div className="case-meta">
                 <span>{item.id}</span>
                 <span>0{index + 1} / 03</span>
@@ -127,7 +130,7 @@ export default function Home() {
                 <span className="status">{item.status}</span>
                 <span>Not a public claim</span>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
       </section>
