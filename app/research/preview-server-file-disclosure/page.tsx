@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { Footer, Header } from '@/components/site-chrome';
 
@@ -31,7 +30,7 @@ SQLite format 3`;
 
 export default function PreviewServerDisclosure() {
   return <main><Header/><article className="article-shell shell">
-    <Link className="article-back" href="/research"><ArrowLeft size={14}/> Research index</Link>
+    <a className="article-back" href="/research"><ArrowLeft size={14}/> Research index</a>
     <header className="article-hero">
       <div className="article-kicker"><span>WEB—FILESYSTEM</span><span>PUBLISHED 01 SEP 2026</span></div>
       <h1>The preview server was also a file server.</h1>
@@ -69,7 +68,7 @@ export default function PreviewServerDisclosure() {
         <h2>What I check now</h2>
         <ul><li>Whether a preview uses a production build or a development server.</li><li>Whether source maps disclose absolute container paths.</li><li>Whether development-only routes remain reachable without a session.</li><li>Whether the preview process can read backend state stored beside the frontend.</li><li>How preview identifiers are created, shared, logged, and expired.</li></ul>
         <p>None of those checks is especially clever on its own. The finding came from refusing to stop at the first interesting response.</p>
-        <div className="article-end"><span>End of record</span><Link href="/research">Return to the research index <ArrowUpRight size={15}/></Link></div>
+        <div className="article-end"><span>End of record</span><a href="/research">Return to the research index <ArrowUpRight size={15}/></a></div>
       </div>
     </div>
   </article><Footer/></main>;

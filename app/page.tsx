@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { ArrowUpRight, FlaskConical, ShieldCheck } from 'lucide-react';
 const cases = [
   {
@@ -30,14 +29,14 @@ export default function Home() {
   return (
     <main>
       <header className="site-header shell">
-        <Link className="brand" href="/">
+        <a className="brand" href="/">
           <span className="brand-mark">V/A</span>
           <span>validbyaccident</span>
-        </Link>
+        </a>
         <nav>
-          <Link href="/research">Index</Link>
-          <Link href="/method">Standard</Link>
-          <Link href="/about">Identity</Link>
+          <a href="/research">Index</a>
+          <a href="/method">Standard</a>
+          <a href="/about">Identity</a>
         </nav>
       </header>
       <section className="hero shell">
@@ -56,12 +55,12 @@ export default function Home() {
             an emphasis on reproducible behavior and clear security impact.
           </p>
           <div className="hero-actions">
-            <Link className="primary-link" href="/research">
+            <a className="primary-link" href="/research">
               Enter the index <ArrowUpRight size={16} />
-            </Link>
-            <Link className="text-link" href="/method">
+            </a>
+            <a className="text-link" href="/method">
               Research methodology
-            </Link>
+            </a>
           </div>
         </div>
         <aside className="lab-note">
@@ -110,13 +109,13 @@ export default function Home() {
             <p className="eyebrow">Research index</p>
             <h2>Selected investigations.</h2>
           </div>
-          <Link className="text-link" href="/research">
+          <a className="text-link" href="/research">
             Full index <ArrowUpRight size={15} />
-          </Link>
+          </a>
         </div>
         <div className="case-grid">
           {cases.map((item, index) => (
-            <Link className="case-card" href={item.href} key={item.id}>
+            <a className="case-card" href={item.href} key={item.id}>
               <div className="case-meta">
                 <span>{item.id}</span>
                 <span>0{index + 1} / 03</span>
@@ -130,7 +129,7 @@ export default function Home() {
                 <span className="status">{item.status}</span>
                 <span>Not a public claim</span>
               </div>
-            </Link>
+            </a>
           ))}
         </div>
       </section>
@@ -143,9 +142,9 @@ export default function Home() {
           Each finding is documented around reproducibility, the boundary
           crossed, attacker requirements, and demonstrated impact.
         </h2>
-        <Link className="primary-link inverse" href="/method">
+        <a className="primary-link inverse" href="/method">
           View the method <ArrowUpRight size={16} />
-        </Link>
+        </a>
       </section>
       <footer className="site-footer shell">
         <div>
@@ -159,7 +158,7 @@ export default function Home() {
           <span>X</span>
           <span>LinkedIn</span>
         </div>
-        <Link href="/about">Contact / disclosure</Link>
+        <a href="/about">Contact / disclosure</a>
       </footer>
     </main>
   );
