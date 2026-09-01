@@ -59,9 +59,9 @@ export default function PreviewServerDisclosure() {
         <pre><code>{databaseRead}</code></pre>
         <p>The file had been modified only minutes before I retrieved it. It was not a forgotten fixture or a cached example database; it was the database used by my active test project.</p>
         <p>That was the point where the finding changed. Source disclosure reveals how an application works. A live database can contain the application&apos;s records. I confirmed the file read using only data from my own controlled project and stopped there.</p>
-        <h2>What I could prove—and what I could not</h2>
-        <p>I could prove that an unauthenticated request, given an active preview identifier, could retrieve project source and the live SQLite database reachable by the preview process. The wildcard CORS response made both readable from an unrelated origin.</p>
-        <p>I did not prove that every generated database contained passwords, tokens, or administrator credentials. That depends on what the project stores. I also did not prove unrestricted access to the container host. The demonstrated boundary was the filesystem scope the Vite process could serve, not an escape from the container.</p>
+        <h2>The boundary I demonstrated</h2>
+        <p>An unauthenticated request, given an active preview identifier, could retrieve project source and the live SQLite database reachable by the preview process. The wildcard CORS response made both readable from an unrelated origin.</p>
+        <p>The database contents naturally depended on the application using it; the security failure was that the entire live file crossed the project boundary without authentication. The demonstrated scope was every readable path Vite exposed inside the preview environment, including backend state—not a claim of container escape.</p>
         <p>There was another practical constraint: the attacker needed the preview UUID, and previews were most reliable while recently active. That limits opportunistic scanning, but it does not restore authorization. Preview URLs are routinely shared, logged, and opened by collaborators.</p>
         <h2>The report was a duplicate</h2>
         <p>The program confirmed that the issue had already been reported and that a fix was in progress. Mine was closed as a duplicate. That is still useful validation: another researcher had independently reached the same broken boundary before I did.</p>
