@@ -1,6 +1,6 @@
 import { ArrowUpRight, ShieldCheck } from 'lucide-react';
 const cases=[
-  {id:'NR-001',area:'DESKTOP—MEMORY',title:'One map file. Six roads to native code execution.',outcome:'Decoder surface → double write → native control',status:'RESEARCH',href:'/research/google-earth-pro-decoder-rce'},
+  {id:'NR-001',area:'DESKTOP—MEMORY',title:'One map file. Six roads to native code execution.',outcome:'Decoder surface → staged chain → native control',status:'RESEARCH',href:'/research/google-earth-pro-decoder-rce'},
   {id:'CR-001',area:'WEB—FILESYSTEM',title:'The preview server was also a file server',outcome:'Source map → source code → live database',status:'DUP',href:'/research/preview-server-file-disclosure'},
   {id:'CR-003',area:'WEB—AUTH',title:'The interface required SMS. The endpoint did not.',outcome:'Alternate path → missing step-up proof',status:'PAID',href:'/research/sms-step-up-totp-enrollment'},
 ];
